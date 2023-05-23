@@ -1,4 +1,4 @@
 package com.example.projetsqlite
 
-class ArticleModel {
+data class ArticleModel(var titre:String,var description:String) {
 }

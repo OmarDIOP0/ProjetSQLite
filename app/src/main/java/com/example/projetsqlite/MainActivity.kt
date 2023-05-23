@@ -21,15 +21,19 @@ class MainActivity : AppCompatActivity() {
         val floatingAddButton=findViewById<FloatingActionButton>(R.id.floatingAddButton);
         var recycleView=findViewById<RecyclerView>(R.id.recycleView);
         val taskList = ArrayList<String>();
+        val titleA = findViewById<EditText>(R.id.title);
+        val descriptionA = findViewById<EditText>(R.id.description);
 
         floatingAddButton.setOnClickListener {
             val intent=Intent(this,AddArticle::class.java)
             startActivity(intent)
         }
-        val db=DBHelper(this);
-        val cursor=db.getData();
-        print("Donnee du cursor==============");
-        print(cursor);
+        fun getArticle(){
+            val db = DBHelper(this, null)
+            val artclelist=db.getAllArticle();
+
+        }
+
     }
 
     inner class TaskAdapter(private val taskList: List<String>) :
