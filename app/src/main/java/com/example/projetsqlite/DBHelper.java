@@ -25,6 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+
     public Boolean insertArticle (String title,String description){
         SQLiteDatabase DB=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
