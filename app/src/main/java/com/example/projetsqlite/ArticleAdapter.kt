@@ -37,15 +37,15 @@ class ArticleAdapter(var items: List<ArticleModel>) : RecyclerView.Adapter<Artic
 
             card.setOnClickListener {
                 Intent(itemView.context, DetailArticle::class.java).also {
-                    it.putExtra("titre_article",title_article.text)
+                    it.putExtra("titre_article",title.text)
                     itemView.context.startActivity(it)
                 }
             }
         }
 
-        fun charger(article : Article){
-            title_article.text = article.title
-            content_article.text = article.content
+        fun charger(article : ArticleModel){
+            title.text = article.titre
+            description.text = article.description
         }
     }
 }

@@ -58,6 +58,12 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return articlelist
     }
 
+    fun deleteArticle(titre: String) : Boolean{
+        val db = writableDatabase
+        val retour = db.delete(TABLE_NAME, "title = ?", arrayOf(titre.toString()))
+        return retour > 0
+    }
+
     companion object{
         private val DATABASE_NAME = "DBArticle"
         private val DATABASE_VERSION = 1
