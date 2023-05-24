@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var taskAdapter:TaskAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,30 +33,16 @@ class MainActivity : AppCompatActivity() {
             val artclelist=db.getAllArticle();
 
         }
+        recycleView = findViewById(R.id.recycleView)
+        var title = intent.getStringExtra("title").toString()
+        var description = intent.getStringExtra("content").toString()
 
-    }
-
-    inner class TaskAdapter(private val taskList: List<String>) :
-        RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
-
-        inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(android.R.layout.simple_list_item_1, parent, false)
-            return TaskViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-            val task = taskList[position]
-            holder.itemView.apply {
-                findViewById<TextView>(android.R.id.text1).text = task
-            }
-        }
-
-
-        override fun getItemCount(): Int {
-            return taskList.size
+        val db = DBHelper(this,null)
+        var items = ArrayList<ArticleModel>()
+        recycleView.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = ArticleAdapter(items)
         }
     }
-}
+
+    }

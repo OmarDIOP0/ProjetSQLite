@@ -29,9 +29,9 @@ class DetailArticle : AppCompatActivity() {
         }
 
 
-        var btn_fleche = findViewById<FloatingActionButton>(R.id.btn_fleche_retour)
+        var floatingBackButton = findViewById<FloatingActionButton>(R.id.floatingBackButton)
 
-        btn_fleche.setOnClickListener {
+        floatingBackButton.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
